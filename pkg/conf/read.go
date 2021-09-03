@@ -1,6 +1,7 @@
 package conf
 
 import (
+	"errors"
 	"os"
 	"path/filepath"
 
@@ -29,6 +30,11 @@ func Read() (Conf, error) {
 	err = toml.Unmarshal(b, &data)
 	if err != nil {
 		return Conf{}, err
+	}
+
+	// Validate config
+	if data.Token == "" {
+		return Conf{}, errors.New("token value in configuration file is required")
 	}
 
 	lumber.Success("Loaded configuration")
