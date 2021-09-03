@@ -1,9 +1,13 @@
 package main
 
 import (
-	"github.com/gleich/logoru"
+	"github.com/gleich/lumber"
+	"github.com/gleich/verpi/pkg/conf"
 )
 
 func main() {
-	logoru.Success("Program booted up!")
+	_, err := conf.Read()
+	if err != nil {
+		lumber.FatalMsg(err, "Failed to read from configuration file")
+	}
 }
