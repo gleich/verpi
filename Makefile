@@ -5,7 +5,7 @@
 build-go:
 	go get -v -t -d ./...
 	go build -v .
-	rm project_name
+	rm verpi
 
 #########
 # Linting

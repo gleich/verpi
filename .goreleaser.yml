@@ -1,7 +1,7 @@
 release:
   github:
-    owner: github_username
-    name: 'project_name'
+    owner: gleich
+    name: 'verpi'
   prerelease: auto
 before:
   hooks:
