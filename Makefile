@@ -3,9 +3,7 @@
 ##########
 
 build-go:
-	go get -v -t -d ./...
-	go build -v .
-	rm verpi
+	GOOS=linux GOARCH=arm go build -v -o dist/verpi
 
 #########
 # Linting
@@ -38,3 +36,5 @@ local-test: test-go
 local-lint: lint-golangci lint-goreleaser lint-hadolint lint-gomod
 # Build
 local-build: build-docker-prod build-docker-dev build-docker-dev-lint
+deploy: build-go
+	scp dist/verpi $(PI):/home/pi/verpi
