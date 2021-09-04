@@ -36,6 +36,12 @@ func Read() (Conf, error) {
 	if data.Token == "" {
 		return Conf{}, errors.New("token value in configuration file is required")
 	}
+	if data.Brightness == 0.0 {
+		data.Brightness = 0.1
+	}
+	if data.UpdateRate == 0 {
+		data.UpdateRate = 1
+	}
 
 	lumber.Success("Loaded configuration")
 

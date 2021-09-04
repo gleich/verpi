@@ -1,7 +1,7 @@
 package conf
 
 type Conf struct {
-	Brightness float32
+	Brightness float64
 	UpdateRate int
 	Token      string
 }

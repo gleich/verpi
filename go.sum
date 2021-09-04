@@ -1,3 +1,7 @@
+github.com/alexellis/blinkt_go v0.0.0-20180120180744-cc0ca163e0bc h1:J/jqFQqoBMa8TD5W0FunVxE3kuWaE+ZdiSrZ5L99SVg=
+github.com/alexellis/blinkt_go v0.0.0-20180120180744-cc0ca163e0bc/go.mod h1:IeFkr+RPLd7XL6LrhpHfSZerUIwVvVhFMwwrOr/FhYU=
+github.com/alexellis/rpi v0.0.0-20170116141016-ab6a4e79f0bd h1:Mx9cUprDyCdGzjWwFRZmrL/G4Cs89/EB8QcZ6j+Mx1Y=
+github.com/alexellis/rpi v0.0.0-20170116141016-ab6a4e79f0bd/go.mod h1:/u5IOmNVyGUK5Y/TV6Dk+4BlqWTEhmvbzvpKPSeZXZQ=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -17,6 +21,8 @@ github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/rogpeppe/rog-go v0.0.0-20210831093509-3c886aea54f1 h1:/OCwqErMqAvGqXRIHZUrPQjvLJ757WSqxnlphaw+9Os=
+github.com/rogpeppe/rog-go v0.0.0-20210831093509-3c886aea54f1/go.mod h1:k0jrzHKdCmJ6zT6iJj0pE0xqilSXprArlMF7cUBMO/w=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
