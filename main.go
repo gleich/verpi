@@ -15,10 +15,15 @@ func main() {
 	if err != nil {
 		lumber.Fatal(err, "Failed to read from configuration file")
 	}
+	client := http.DefaultClient
+	username, err := api.Username(config, client)
+	if err != nil {
+		lumber.Fatal(err, "Failed to get vercel username")
+	}
 	display := lights.Setup(config)
 
 	for {
-		deployments, err := api.Deployments(config, http.DefaultClient)
+		deployments, err := api.ProjectDeployments(username, config, client)
 		if err != nil {
 			lumber.Fatal(err, "Failed to get deployments")
 		}
