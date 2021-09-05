@@ -1,52 +1,67 @@
 import shutil
 import os
+import sys
+
+tmp_dir = "/home/pi/verpi_build"
+go_binary_path = os.path.join(tmp_dir, "bin/go")
 
 
 def main() -> None:
-    install_go()
-    compile()
+    command = sys.argv[1]
+    if command == "install":
+        setup()
+        install_go()
+        clone_repo()
+        compile()
+        install_verpi()
+    os.chdir("..")
+    shutil.rmtree(tmp_dir)
 
 
-go_install_loc = "/usr/local/go/"
+def setup() -> None:
+    if os.path.exists(tmp_dir):
+        shutil.rmtree(tmp_dir)
+    os.mkdir(tmp_dir)
+    os.chdir(tmp_dir)
 
 
 def install_go() -> None:
-    if shutil.which("go") is None:
-        go_version = "1.17"
-        tar_fname = f"go{go_version}.linux-armv6l.tar.gz"
-        print(f"Installing go {go_version}...")
+    go_version = "1.17"
+    tar_file = f"go{go_version}.linux-armv6l.tar.gz"
+    print(f"Installing temporaray version of go {go_version}...")
+    command("wget -c https://golang.org/dl/" + tar_file)
+    command(f"tar -C {tmp_dir} -xvzf {tar_file}")
+    print(f"Setup temporaray version of go {go_version}")
 
-        if os.path.exists(go_install_loc):
-            shutil.rmtree(go_install_loc)
-        if os.path.exists(tar_fname):
-            os.remove(tar_fname)
 
-        system_check(f"wget https://golang.org/dl/{tar_fname}")
-        system_check(f"tar --checkpoint -C /usr/local -xvzf {tar_fname}")
-        os.remove(tar_fname)
-        print(
-            "Installed go",
-            go_version,
-            "in /usr/local/go/. Binaries are in /usr/local/go/bin/",
-        )
-    else:
-        proceed = (
-            input(
-                "Looks like go is already installed on your system. You need to a version of go greater than 1.15 for verpi to compile. Are you sure you want to proceed with the installation? (y/n)"
-            ).lower()
-            == "y"
-        )
-        if not proceed:
-            exit(1)
+def clone_repo() -> None:
+    print("Cloning repo")
+    command("git clone https://github.com/gleich/verpi.git")
+    print("Cloned repo")
 
 
 def compile() -> None:
     print("Compiling binary from source code:")
-    system_check(os.path.join(go_install_loc, "bin", "go") + " build -v -o dist/verpi")
+    original_gopath = os.getenv("GOPATH")
+    os.environ["GOPATH"] = os.path.join(tmp_dir, "goroot")
+    os.chdir("verpi")
+    command("../go/bin/go build -v -o dist/verpi .")
+    if original_gopath is not None:
+        os.environ["GOPATH"] = original_gopath
+    os.chdir("..")
     print("Compiled binary")
 
 
-def system_check(cmd: str) -> None:
+def install_verpi() -> None:
+    verpi_bin_path = "/usr/local/bin/verpi"
+    print("Installing verpi at", verpi_bin_path)
+    if os.path.exists(verpi_bin_path):
+        os.remove(verpi_bin_path)
+    os.rename("verpi/dist/verpi", verpi_bin_path)
+    print("verpi installed at", verpi_bin_path)
+
+
+def command(cmd: str) -> None:
     """Run os.system but exit with a failure if the exit code is not zero
 
     Args:
