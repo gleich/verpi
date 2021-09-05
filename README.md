@@ -9,9 +9,8 @@
 ![lint](https://github.com/gleich/verpi/workflows/lint/badge.svg)
 ![release](https://github.com/gleich/verpi/workflows/release/badge.svg)
 
-https://user-images.githubusercontent.com/43759105/132117267-ec147769-a7af-4f61-bdc8-269a1fd8a466.mp4
-
 - [verpi](#verpi)
+  - [🎥 Demo](#-demo)
   - [🚥 Setup your own version](#-setup-your-own-version)
     - [💵 Getting the parts](#-getting-the-parts)
     - [🚥 Install the pimoroni blinkt](#-install-the-pimoroni-blinkt)
@@ -23,6 +22,12 @@ https://user-images.githubusercontent.com/43759105/132117267-ec147769-a7af-4f61-
     - [👋 Uninstalling verpi](#-uninstalling-verpi)
   - [🙌 Contributing](#-contributing)
   - [👥 Contributors](#-contributors)
+
+## 🎥 Demo
+
+https://user-images.githubusercontent.com/43759105/132117267-ec147769-a7af-4f61-bdc8-269a1fd8a466.mp4
+
+Note: Normally all 8 LEDs would be lit up but I only have 6 projects on vercel so only 6 are lit up.
 
 ## 🚥 Setup your own version
 
