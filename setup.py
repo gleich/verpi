@@ -100,6 +100,7 @@ def reboot() -> None:
     for i in reversed(range(2)):
         print(i + 1)
         time.sleep(1)
+    print("Rebooting now")
     command("reboot")
 
 
