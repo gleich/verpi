@@ -1,6 +1,7 @@
 import shutil
 import os
 import sys
+import time
 from urllib.request import urlopen
 
 tmp_dir = "/home/pi/verpi_build"
@@ -18,6 +19,13 @@ def main() -> None:
         compile()
         install_verpi()
         install_verpi_service()
+        reboot()
+    elif command == "uninstall":
+        uninstall()
+        reboot()
+    else:
+        print(command, "isn't a valid command")
+        exit(1)
     os.chdir("..")
     shutil.rmtree(tmp_dir)
 
@@ -74,6 +82,25 @@ def install_verpi_service() -> None:
         systemd_file.write(content)
     command("systemctl enable verpi")
     print("Added and started systemd service")
+
+
+def uninstall() -> None:
+    os.remove(verpi_bin_path)
+    print("Deleted binary")
+    command("systemctl disable verpi")
+    print("Disabled systemd service")
+    os.remove(systemd_service_path)
+    print("Deleted systemd service file")
+
+
+def reboot() -> None:
+    print(
+        "\nRebooting pi in 3 seconds. You might need to cut the power to fully turn off the lights."
+    )
+    for i in reversed(range(2)):
+        print(i + 1)
+        time.sleep(1)
+    command("reboot")
 
 
 def command(cmd: str) -> None:
