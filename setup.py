@@ -1,9 +1,12 @@
 import shutil
 import os
 import sys
+from urllib.request import urlopen
 
 tmp_dir = "/home/pi/verpi_build"
 go_binary_path = os.path.join(tmp_dir, "bin/go")
+systemd_service_path = "/etc/systemd/system/verpi.service"
+verpi_bin_path = "/usr/local/bin/verpi"
 
 
 def main() -> None:
@@ -14,6 +17,7 @@ def main() -> None:
         clone_repo()
         compile()
         install_verpi()
+        install_verpi_service()
     os.chdir("..")
     shutil.rmtree(tmp_dir)
 
@@ -53,12 +57,23 @@ def compile() -> None:
 
 
 def install_verpi() -> None:
-    verpi_bin_path = "/usr/local/bin/verpi"
     print("Installing verpi at", verpi_bin_path)
     if os.path.exists(verpi_bin_path):
         os.remove(verpi_bin_path)
     os.rename("verpi/dist/verpi", verpi_bin_path)
     print("verpi installed at", verpi_bin_path)
+
+
+def install_verpi_service() -> None:
+    print("Installing systemd service for verpi")
+    with urlopen(
+        "https://raw.githubusercontent.com/gleich/verpi/master/verpi.service"
+    ) as response:
+        content = response.read().decode("utf-8")
+    with open(systemd_service_path, "w") as systemd_file:
+        systemd_file.write(content)
+    command("systemctl enable verpi")
+    print("Added and started systemd service")
 
 
 def command(cmd: str) -> None:
