@@ -1,0 +1,16 @@
+[Unit]
+Description=See the status of your vercel deployments on the pimoroni blinkt!
+
+Wants=network.target
+After=syslog.target  network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/verpi
+Restart=always
+RestartSec=5
+KillMode=process
+User=pi
+
+[Install]
+WantedBy=multi-user.target
