@@ -15,9 +15,9 @@ func Update(deployments []string, display *blinkt.Blinkt) {
 		case "READY":
 			display.SetPixel(i, 0, 255, 0) // Green
 		case "QUEUED":
-			display.SetPixel(i, 255, 128, 0) // Orange
+			display.SetPixel(i, 255, 128, 0) // Yellow
 		case "BUILDING":
-			display.SetPixel(i, 255, 128, 0) // Orange
+			display.SetPixel(i, 255, 128, 0) // Yellow
 		default:
 			display.SetPixel(i, 255, 0, 0) // Red
 		}
