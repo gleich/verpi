@@ -32,7 +32,8 @@ func main() {
 		if *config.Brightness == 0.0 {
 			lumber.Info("Not updating lights because brightness set to 0")
 			display.Clear()
-			time.Sleep(2 * time.Second)
+			time.Sleep(20 * time.Millisecond)
+			continue
 		}
 
 		deployments, err := api.ProjectDeployments(username, config, client)
