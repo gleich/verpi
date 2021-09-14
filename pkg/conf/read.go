@@ -40,7 +40,7 @@ func Read() (Conf, error) {
 		*data.Brightness = 0.1
 	}
 
-	lumber.Success("Loaded configuration")
+	lumber.Success("Loaded configuration:", data)
 
 	return data, nil
 }
