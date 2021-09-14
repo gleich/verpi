@@ -32,6 +32,7 @@ func main() {
 		if *config.Brightness == 0.0 {
 			lumber.Info("Not updating lights because brightness set to 0")
 			display.Clear()
+			display.Show()
 			time.Sleep(20 * time.Millisecond)
 			continue
 		}

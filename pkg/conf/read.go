@@ -2,7 +2,6 @@ package conf
 
 import (
 	"errors"
-	"fmt"
 	"os"
 	"path/filepath"
 
@@ -41,7 +40,7 @@ func Read() (Conf, error) {
 		*data.Brightness = 0.1
 	}
 
-	lumber.Success("Loaded configuration:", fmt.Sprintf("%#v", data))
+	lumber.Success("Loaded configuration")
 
 	return data, nil
 }
