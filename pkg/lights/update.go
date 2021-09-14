@@ -5,10 +5,12 @@ import (
 
 	blinkt "github.com/alexellis/blinkt_go"
 	"github.com/gleich/lumber"
+	"github.com/gleich/verpi/pkg/conf"
 )
 
 // Update the lights based off the deployment statuses
-func Update(deployments []string, display *blinkt.Blinkt) {
+func Update(config conf.Conf, deployments []string, display *blinkt.Blinkt) {
+	display.SetBrightness(config.Brightness)
 	lumber.Info("Updating lights")
 	for i, deployment := range deployments {
 		switch strings.ToUpper(deployment) {

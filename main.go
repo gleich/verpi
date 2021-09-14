@@ -34,7 +34,7 @@ func main() {
 			lumber.Fatal(err, "Failed to get deployments")
 		}
 
-		lights.Update(deployments, display)
+		lights.Update(config, deployments, display)
 
 		time.Sleep(2 * time.Second)
 	}
