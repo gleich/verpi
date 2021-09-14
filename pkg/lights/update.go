@@ -10,8 +10,15 @@ import (
 
 // Update the lights based off the deployment statuses
 func Update(config conf.Conf, deployments []string, display *blinkt.Blinkt) {
-	display.SetBrightness(config.Brightness)
+	display.SetBrightness(*config.Brightness)
 	lumber.Info("Updating lights")
+
+	if *config.Brightness == 0.0 {
+		display.SetAll(0, 0, 0)
+		lumber.Success("Let lights to off because of brightness set to 0.0")
+		return
+	}
+
 	for i, deployment := range deployments {
 		switch strings.ToUpper(deployment) {
 		case "READY":
