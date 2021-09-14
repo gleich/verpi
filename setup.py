@@ -19,13 +19,14 @@ def main() -> None:
         compile()
         install_verpi()
         install_verpi_service()
+        os.chdir("..")
+        if os.path.exists(tmp_dir):
+            shutil.rmtree(tmp_dir)
     elif command == "uninstall":
         uninstall()
     else:
         print(command, "isn't a valid command")
         exit(1)
-    os.chdir("..")
-    shutil.rmtree(tmp_dir)
     reboot()
 
 
