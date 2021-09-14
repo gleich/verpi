@@ -20,6 +20,7 @@
     - [🔑 Creating a token](#-creating-a-token)
     - [🚀 Installing verpi](#-installing-verpi)
     - [👋 Uninstalling verpi](#-uninstalling-verpi)
+  - [⚙️ Configuring verpi](#️-configuring-verpi)
   - [🙌 Contributing](#-contributing)
   - [👥 Contributors](#-contributors)
 
@@ -89,6 +90,21 @@ To uninstall verpi just run the following command on your raspberry pi:
 
 ```sh
 wget -q -O - https://raw.githubusercontent.com/gleich/verpi/master/setup.py | python3 - uninstall
+```
+
+## ⚙️ Configuring verpi
+
+Using the configuration file located at `~/.config/verpi/conf.toml` you can change the brightness of the lights. By default, the brightness is set to 0.1. To turn the lights off you can set the brightness to 0.0 as seen below:
+
+```toml
+brightness = 0.0
+```
+
+Below is an example configuration file:
+
+```toml
+token = "<YOUR VERCEL TOKEN>"
+brightness = 0.0
 ```
 
 ## 🙌 Contributing
