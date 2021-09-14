@@ -29,6 +29,12 @@ func main() {
 			lumber.Fatal(err, "Failed to read from configuration file")
 		}
 
+		if *config.Brightness == 0.0 {
+			lumber.Info("Not updating lights because brightness set to 0")
+			display.Clear()
+			time.Sleep(2 * time.Second)
+		}
+
 		deployments, err := api.ProjectDeployments(username, config, client)
 		if err != nil {
 			lumber.Fatal(err, "Failed to get deployments")

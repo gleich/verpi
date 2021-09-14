@@ -12,6 +12,7 @@ func Setup(config conf.Conf) *blinkt.Blinkt {
 	display := blinkt.NewBlinkt(*config.Brightness)
 	display.SetClearOnExit(true)
 	display.Setup()
+	display.Clear()
 	lumber.Success("Setup display")
 	return &display
 }
