@@ -36,6 +36,6 @@ func main() {
 
 		lights.Update(config, deployments, display)
 
-		time.Sleep(2 * time.Second)
+		time.Sleep(4 * time.Second)
 	}
 }
