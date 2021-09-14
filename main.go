@@ -23,6 +23,12 @@ func main() {
 	display := lights.Setup(config)
 
 	for {
+		// Rereading from configuration file to load any new changes
+		config, err := conf.Read()
+		if err != nil {
+			lumber.Fatal(err, "Failed to read from configuration file")
+		}
+
 		deployments, err := api.ProjectDeployments(username, config, client)
 		if err != nil {
 			lumber.Fatal(err, "Failed to get deployments")
