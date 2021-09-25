@@ -8,8 +8,8 @@ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/fatih/color v1.10.0/go.mod h1:ELkj/draVOlAH/xkhN6mQ50Qd0MPOk5AAr3maGEBuJM=
 github.com/fatih/color v1.13.0 h1:8LOYc1KYPPmyKMuN8QV2DNRWNbLo6LZ0iLs8+mlH53w=
 github.com/fatih/color v1.13.0/go.mod h1:kLAiJbzzSOZDVNGyDpeOxJ47H46qBXwg5ILebYFFOfk=
-github.com/gleich/lumber/v2 v2.1.0 h1:Rz6W08r9+9I+//NvfZJoi256HZcdS9grnILblzu8WUo=
-github.com/gleich/lumber/v2 v2.1.0/go.mod h1:pkfSf79z7hol7GyiXlvjOP6SL0vCAtyK2blrluRcc78=
+github.com/gleich/lumber/v2 v2.1.1 h1:5c2BC6oLDRWAhQsj7bXWRWbXe/HS98EeR6qugvRtzWE=
+github.com/gleich/lumber/v2 v2.1.1/go.mod h1:pkfSf79z7hol7GyiXlvjOP6SL0vCAtyK2blrluRcc78=
 github.com/mattn/go-colorable v0.1.8/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
 github.com/mattn/go-colorable v0.1.9 h1:sqDoxXbdeALODt0DAeJCVp38ps9ZogZEAXjus69YV3U=
 github.com/mattn/go-colorable v0.1.9/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
