@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/gleich/lumber"
+	"github.com/gleich/lumber/v2"
 	"github.com/gleich/verpi/pkg/api"
 	"github.com/gleich/verpi/pkg/conf"
 	"github.com/gleich/verpi/pkg/lights"

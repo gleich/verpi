@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/gleich/lumber"
+	"github.com/gleich/lumber/v2"
 	"github.com/gleich/verpi/pkg/conf"
 )
 

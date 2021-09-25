@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/gleich/lumber"
+	"github.com/gleich/lumber/v2"
 	"github.com/pelletier/go-toml/v2"
 )
 

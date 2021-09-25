@@ -4,7 +4,7 @@ import (
 	"strings"
 
 	blinkt "github.com/alexellis/blinkt_go"
-	"github.com/gleich/lumber"
+	"github.com/gleich/lumber/v2"
 	"github.com/gleich/verpi/pkg/conf"
 )
 
