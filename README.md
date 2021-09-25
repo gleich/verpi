@@ -79,7 +79,7 @@ token = "<TOKEN>"
 To install verpi just run the following command on your raspberry pi:
 
 ```sh
-wget -q -O - https://raw.githubusercontent.com/gleich/verpi/master/setup.py | python3 - install
+wget -q -O - https://raw.githubusercontent.com/gleich/verpi/master/setup.py | sudo python3 - install
 ```
 
 This script will install a temporary version of golang to produce a binary and install a systemd service. It will not mess with whatever version of go you might already have installed on the pi.
@@ -89,7 +89,7 @@ This script will install a temporary version of golang to produce a binary and i
 To uninstall verpi just run the following command on your raspberry pi:
 
 ```sh
-wget -q -O - https://raw.githubusercontent.com/gleich/verpi/master/setup.py | python3 - uninstall
+wget -q -O - https://raw.githubusercontent.com/gleich/verpi/master/setup.py | sudo python3 - uninstall
 ```
 
 ## ⚙️ Configuring verpi
