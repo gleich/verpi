@@ -11,8 +11,8 @@ import (
 )
 
 // Get the user's slack ID so we can filter
-func Username(config conf.Conf, client *http.Client) (string, error) {
-	lumber.Info("Getting the user's vercel username")
+func Username(log lumber.Logger, config conf.Conf, client *http.Client) (string, error) {
+	log.Info("Getting the user's vercel username")
 	// Making request
 	req, err := http.NewRequest("GET", baseURL+"/www/user", nil)
 	if err != nil {
@@ -46,6 +46,6 @@ func Username(config conf.Conf, client *http.Client) (string, error) {
 		return "", errors.New("No username found with access token")
 	}
 
-	lumber.Success("Got", data.User.Username+"'s", "vercel username")
+	log.Success("Got", data.User.Username+"'s", "vercel username")
 	return data.User.Username, nil
 }

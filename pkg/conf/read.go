@@ -10,8 +10,8 @@ import (
 )
 
 // Read from the configuration file and parse it
-func Read() (Conf, error) {
-	lumber.Info("Loading configuration")
+func Read(log lumber.Logger) (Conf, error) {
+	log.Info("Loading configuration")
 	// Configuration location
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
@@ -41,7 +41,7 @@ func Read() (Conf, error) {
 		data.Brightness = &defaultBrightness
 	}
 
-	lumber.Success("Loaded configuration")
+	log.Success("Loaded configuration")
 
 	return data, nil
 }

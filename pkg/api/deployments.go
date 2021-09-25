@@ -10,8 +10,13 @@ import (
 )
 
 // Get a list of the last 10 deployments
-func ProjectDeployments(username string, config conf.Conf, client *http.Client) ([]string, error) {
-	lumber.Info("Getting deployments")
+func ProjectDeployments(
+	log lumber.Logger,
+	username string,
+	config conf.Conf,
+	client *http.Client,
+) ([]string, error) {
+	log.Info("Getting deployments")
 	// Making request
 	req, err := http.NewRequest("GET", baseURL+"/v8/projects", nil)
 	if err != nil {
@@ -51,13 +56,13 @@ func ProjectDeployments(username string, config conf.Conf, client *http.Client) 
 	deployments := []string{}
 	for _, project := range data.Projects {
 		for _, deployment := range project.LatestDeployments {
-			if deployment.Creator.Username == username {
 				deployments = append(deployments, deployment.ReadyState)
 				break
 			}
 		}
 	}
 
-	lumber.Success("Got data for", len(deployments), "deployments")
+	log.Success("Got data for", len(deployments), "deployments")
+
 	return deployments, nil
 }

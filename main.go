@@ -11,38 +11,40 @@ import (
 )
 
 func main() {
-	config, err := conf.Read()
+	log := lumber.NewCustomLogger()
+	log.Timezone = time.Local
+	config, err := conf.Read(log)
 	if err != nil {
 		lumber.Fatal(err, "Failed to read from configuration file")
 	}
 	client := http.DefaultClient
-	username, err := api.Username(config, client)
+	username, err := api.Username(log, config, client)
 	if err != nil {
 		lumber.Fatal(err, "Failed to get vercel username")
 	}
-	display := lights.Setup(config)
+	display := lights.Setup(log, config)
 
 	for {
 		// Rereading from configuration file to load any new changes
-		config, err := conf.Read()
+		config, err := conf.Read(log)
 		if err != nil {
-			lumber.Fatal(err, "Failed to read from configuration file")
+			log.Fatal(err, "Failed to read from configuration file")
 		}
 
 		if *config.Brightness == 0.0 {
-			lumber.Info("Not updating lights because brightness set to 0")
+			log.Info("Not updating lights because brightness set to 0")
 			display.Clear()
 			display.Show()
 			time.Sleep(20 * time.Millisecond)
 			continue
 		}
 
-		deployments, err := api.ProjectDeployments(username, config, client)
+		deployments, err := api.ProjectDeployments(log, username, config, client)
 		if err != nil {
-			lumber.Fatal(err, "Failed to get deployments")
+			log.Fatal(err, "Failed to get deployments")
 		}
 
-		lights.Update(config, deployments, display)
+		lights.Update(log, config, deployments, display)
 
 		time.Sleep(4 * time.Second)
 	}

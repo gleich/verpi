@@ -9,9 +9,9 @@ import (
 )
 
 // Update the lights based off the deployment statuses
-func Update(config conf.Conf, deployments []string, display *blinkt.Blinkt) {
+func Update(log lumber.Logger, config conf.Conf, deployments []string, display *blinkt.Blinkt) {
 	display.SetBrightness(*config.Brightness)
-	lumber.Info("Updating lights")
+	log.Info("Updating lights")
 	for i, deployment := range deployments {
 		switch strings.ToUpper(deployment) {
 		case "READY":
@@ -25,5 +25,5 @@ func Update(config conf.Conf, deployments []string, display *blinkt.Blinkt) {
 		}
 	}
 	display.Show()
-	lumber.Success("Updated lights")
+	log.Success("Updated lights")
 }

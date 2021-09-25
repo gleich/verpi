@@ -7,12 +7,12 @@ import (
 )
 
 // Setup the display
-func Setup(config conf.Conf) *blinkt.Blinkt {
-	lumber.Info("Setting up display")
+func Setup(log lumber.Logger, config conf.Conf) *blinkt.Blinkt {
+	log.Info("Setting up display")
 	display := blinkt.NewBlinkt(*config.Brightness)
 	display.SetClearOnExit(true)
 	display.Setup()
 	display.Clear()
-	lumber.Success("Setup display")
+	log.Success("Setup display")
 	return &display
 }
