@@ -56,6 +56,7 @@ func ProjectDeployments(
 	deployments := []string{}
 	for _, project := range data.Projects {
 		for _, deployment := range project.LatestDeployments {
+			if deployment.Creator.Username == username && len(deployments) <= 8 {
 				deployments = append(deployments, deployment.ReadyState)
 				break
 			}
