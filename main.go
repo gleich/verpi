@@ -15,12 +15,12 @@ func main() {
 	log.Timezone = time.Local
 	config, err := conf.Read(log)
 	if err != nil {
-		lumber.Fatal(err, "Failed to read from configuration file")
+		log.Fatal(err, "Failed to read from configuration file")
 	}
 	client := http.DefaultClient
 	username, err := api.Username(log, config, client)
 	if err != nil {
-		lumber.Fatal(err, "Failed to get vercel username")
+		log.Fatal(err, "Failed to get vercel username")
 	}
 	display := lights.Setup(log, config)
 
